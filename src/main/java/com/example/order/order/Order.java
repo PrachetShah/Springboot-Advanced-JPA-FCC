@@ -1,11 +1,13 @@
-package com.example.order;
+package com.example.order.order;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table
 public class Order {
+    @Id
     private Integer id;
     private String item;
     private String seller;
@@ -13,6 +15,8 @@ public class Order {
     private Integer quantity;
 
     // Constructors
+    public Order() {
+    }
     public Order(Integer id, String item, String seller, String category, Integer quantity) {
         this.id = id;
         this.item = item;
@@ -26,6 +30,8 @@ public class Order {
         this.category = category;
         this.quantity = quantity;
     }
+
+    // Getters and Setters
     public Integer getId() {
         return id;
     }

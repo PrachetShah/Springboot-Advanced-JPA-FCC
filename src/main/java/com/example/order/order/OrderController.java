@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     @GetMapping
     public String hello(){
-        return "Hello World";
+        return "Hello Order Application World";
     }
 }

@@ -1,30 +1,36 @@
 package com.example.order.order;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "t_order")
 public class Order {
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int id;
     private String item;
+    @Column(unique = true)
+    private int item_id;
     private String seller;
     private String category;
-    private Integer quantity;
+    private int quantity;
 
     // Constructors
     public Order() {
     }
-    public Order(Integer id, String item, String seller, String category, Integer quantity) {
+    public Order(int id, String item, String seller, String category, int quantity) {
         this.id = id;
         this.item = item;
         this.seller = seller;
         this.category = category;
         this.quantity = quantity;
     }
-    public Order(String item, String seller, String category, Integer quantity) {
+    public Order(String item, String seller, String category, int quantity) {
         this.item = item;
         this.seller = seller;
         this.category = category;
@@ -32,10 +38,10 @@ public class Order {
     }
 
     // Getters and Setters
-    public Integer getId() {
+    public int getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getItem() {
@@ -43,6 +49,12 @@ public class Order {
     }
     public void setItem(String item) {
         this.item = item;
+    }
+    public int getItem_id() {
+        return item_id;
+    }
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
     }
     public String getSeller() {
         return seller;
@@ -56,10 +68,10 @@ public class Order {
     public void setCategory(String category) {
         this.category = category;
     }
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

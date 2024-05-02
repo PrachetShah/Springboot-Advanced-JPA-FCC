@@ -15,7 +15,7 @@ public class Order {
     private int id;
     private String item;
     @Column(unique = true)
-    private int item_id;
+    private int itemId;
     private String seller;
     private String category;
     private int quantity;
@@ -50,11 +50,11 @@ public class Order {
     public void setItem(String item) {
         this.item = item;
     }
-    public int getItem_id() {
-        return item_id;
+    public int getItemId() {
+        return itemId;
     }
-    public void setItem_id(int item_id) {
-        this.item_id = item_id;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
     public String getSeller() {
         return seller;

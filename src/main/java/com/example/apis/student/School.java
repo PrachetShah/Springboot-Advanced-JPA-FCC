@@ -12,6 +12,8 @@ public class School {
 
     private String name;
 
+    // relationship b/w school and students is One To Many
+
     public School(){
     }
 

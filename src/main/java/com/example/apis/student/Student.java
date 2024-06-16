@@ -1,8 +1,10 @@
 package com.example.apis.student;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +17,15 @@ public class Student {
     private String lastName;
     private String email;
     private int age;
+
+    // Student is the primary entity for relationship
+    // to create relationship between tables we need to create a relationship type object
+    @OneToOne(
+        mappedBy = "student",
+        // cascade type all refers that if this table is deleted, delete relationship table as well
+        cascade = CascadeType.ALL
+    )
+    private StudentProfile studentProfile;
     
     public Student() {
     }

@@ -1,4 +1,4 @@
-package com.example.order.order;
+package com.example.apis.order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

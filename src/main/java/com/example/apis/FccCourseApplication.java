@@ -1,13 +1,13 @@
-package com.example.order;
+package com.example.apis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OrderApplication {
+public class FccCourseApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrderApplication.class, args);
+		SpringApplication.run(FccCourseApplication.class, args);
 	}
 
 }

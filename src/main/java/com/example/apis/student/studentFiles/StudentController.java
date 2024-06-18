@@ -20,24 +20,29 @@ public class StudentController {
     }
 
     @PostMapping("api/students")
-    public Student add(@RequestBody Student student){
+    public Student addStudent(@RequestBody Student student){
         return studentRepository.save(student);
     }
 
     @GetMapping("api/students")
-    public List<Student> hello(){
+    public List<Student> getAll(){
         return studentRepository.findAll();
     }
 
     @GetMapping(path="api/students/{id}")
-    public Student getOrderbyId(@PathVariable int id){
+    public Student getStudentbyId(@PathVariable int id){
         return studentRepository.findById(id).orElse(null);
+    }
+
+    @GetMapping(path="api/students/search/{student_name}")
+    public List<Student> getStudentbyName(@PathVariable("student_name") String student_name){
+        return studentRepository.findAllByFirstNameContaining(student_name);
     }
 
     // delete using order id
     @DeleteMapping(path = "api/students/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String deleteItem(@PathVariable int id){
+    public String deleteStudent(@PathVariable int id){
         studentRepository.deleteById(id);
         return "delete successfully";
     }

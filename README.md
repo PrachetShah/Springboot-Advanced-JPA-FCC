@@ -4,11 +4,11 @@
 
 - See Student.java and StudentProfile.java to see OneToOne Reltionship definition i.e Each Student has a StudentProfile
 
-- See School.java and Student.java to see OneToMany Relationship definition as School has one to many relationship with Students i.e School has many Students
+- See School.java and Student.java to see OneToMany and ManyToOne Relationship definition as School has one to many relationship with Students i.e School has many Students
 
 #### RelationShip Mapping
 
-![mapping](RelationShip Heirarchy Mapping.png)
+![mapping]("RelationShip Heirarchy Mapping.png")
 
 ### Methods to Run the Code
 

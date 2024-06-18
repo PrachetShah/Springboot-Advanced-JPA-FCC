@@ -1,9 +1,14 @@
-package com.example.apis.student;
+package com.example.apis.student.studentFiles;
+
+import com.example.apis.student.StudentProfile;
+import com.example.apis.student.schoolFiles.School;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -26,6 +31,11 @@ public class Student {
         cascade = CascadeType.ALL
     )
     private StudentProfile studentProfile;
+
+    @ManyToOne
+    @JoinColumn(name="school_id")
+    // the name here should be name as "mappedBy" in School.java which is school
+    private School school;
     
     public Student() {
     }
@@ -76,6 +86,22 @@ public class Student {
         this.age = age;
     }
     
+    public StudentProfile getStudentProfile() {
+        return studentProfile;
+    }
+
+    public void setStudentProfile(StudentProfile studentProfile) {
+        this.studentProfile = studentProfile;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
     @Override
     public String toString() {
         return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email

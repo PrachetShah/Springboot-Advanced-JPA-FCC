@@ -1,5 +1,7 @@
 package com.example.apis.student;
 
+import com.example.apis.student.studentFiles.Student;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -47,10 +49,19 @@ public class StudentProfile {
     public void setBio(String bio) {
         this.bio = bio;
     }
+    
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     @Override
     public String toString() {
         return "StoreProfile [id=" + id + ", bio=" + bio + "]";
     }
+
 
 }

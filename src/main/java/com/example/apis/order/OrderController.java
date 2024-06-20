@@ -18,9 +18,15 @@ public class OrderController {
         this.orderRepo = orderRepo;
     }
 
-    @PostMapping
+    @PostMapping("api/orders")
     public Order add(@RequestBody Order order){
-        return orderRepo.save(order);
+        Order exists = orderRepo.findByItemId(order.getItemId());
+        if(exists == null){
+            return orderRepo.save(order);
+        }else{
+            System.out.println("Order With ItemId exists");
+            return null;
+        }
     }
 
     @GetMapping("api/orders")

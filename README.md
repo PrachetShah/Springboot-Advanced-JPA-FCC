@@ -22,7 +22,7 @@
 
 Now using this, we need to provide a lot of overhead and makes our Student object more and more complex. To overcome this, we use `DTO` which is the **Data Transfer Object Pattern**
 
-![dto pattern](DTO Pattern.png)
+![dto pattern](DTO_Pattern.png)
 
 ### Methods to Run the Code
 

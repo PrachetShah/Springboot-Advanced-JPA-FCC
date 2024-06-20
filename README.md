@@ -1,22 +1,22 @@
 ## A Springboot utilising Java-Maven for FCC Course of Springboot by Ali Bou
 
+#### RelationShip Mapping
+
+![mapping]("RelationShip_Heirarchy_Mapping.png")
+
 ### Defining JPA Relationships
 
-- See Student.java and StudentProfile.java to see OneToOne Reltionship definition i.e Each Student has a StudentProfile
+- See Student.java and StudentProfile.java to see `@OneToOne` Reltionship definition i.e Each Student has a StudentProfile
 
-- See School.java and Student.java to see OneToMany and ManyToOne Relationship definition as School has one to many relationship with Students i.e School has many Students
+- See School.java and Student.java to see `@OneToMany` and `@ManyToOne` Relationship definition as School has one to many relationship with Students i.e School has many Students
 
 ### How to Avoid Infinite Recursion while inserting data after relationship mapping
 
-USINg Jackson Annotations
+**USING Jackson Annotations**
 
-- School is parent of Student, so we add `@JsonManagedReference` in School.java where List of Stidents is defined which causes infinite recursion between Student and School, because student also has School defined. <br>This annotation means that Parent is responsible for serializing the child and child cannot serialize parent.
+- School is **PARENT** of Student, so we add `@JsonManagedReference` in School.java where List of Stidents is defined which causes infinite recursion between Student and School, because student also has School defined. <br>This annotation means that Parent is responsible for serializing the child and child cannot serialize parent.
 
-- Since Student is <underline>CHILD</underline> of School, we use `@JsonBackReference` annotation in Student.java where School is instantiated. This means that Student entity/object doesnt need to serialize its parent i.e School
-
-#### RelationShip Mapping
-
-![mapping]("RelationShip Heirarchy Mapping.png")
+- Since Student is **CHILD** of School, we use `@JsonBackReference` annotation in Student.java where School is instantiated. This means that Student entity/object doesnt need to serialize its parent i.e School
 
 ### Methods to Run the Code
 

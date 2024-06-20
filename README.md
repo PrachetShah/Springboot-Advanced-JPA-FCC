@@ -1,4 +1,4 @@
-## A Springboot utilising Java-Maven for FCC Course of Springboot by Ali Bou
+## Advanced Springboot with relationships in JPA using Java-Maven for FCC Course of Springboot
 
 #### RelationShip Mapping
 
@@ -19,6 +19,10 @@
 - School is **PARENT** of Student, so we add `@JsonManagedReference` in School.java where List of Stidents is defined which causes infinite recursion between Student and School, because student also has School defined. <br>This annotation means that Parent is responsible for serializing the child and child cannot serialize parent.
 
 - Since Student is **CHILD** of School, we use `@JsonBackReference` annotation in Student.java where School is instantiated. This means that Student entity/object doesnt need to serialize its parent i.e School
+
+Now using this, we need to provide a lot of overhead and makes our Student object more and more complex. To overcome this, we use `DTO` which is the **Data Transfer Object Pattern**
+
+![dto pattern](DTO Pattern.png)
 
 ### Methods to Run the Code
 

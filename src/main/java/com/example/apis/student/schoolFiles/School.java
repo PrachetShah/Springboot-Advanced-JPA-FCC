@@ -3,6 +3,7 @@ package com.example.apis.student.schoolFiles;
 import java.util.List;
 
 import com.example.apis.student.studentFiles.Student;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,6 +22,8 @@ public class School {
     @OneToMany(
         mappedBy = "school"
     )
+    // Jackson Annotations are used here to prevent infinite recursion while adding data, read README.md for more dets
+    @JsonManagedReference
     private List<Student> students;
 
     public School(){

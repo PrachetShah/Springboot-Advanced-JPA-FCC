@@ -2,6 +2,7 @@ package com.example.apis.student.studentFiles;
 
 import com.example.apis.student.StudentProfile;
 import com.example.apis.student.schoolFiles.School;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -35,6 +36,8 @@ public class Student {
     @ManyToOne
     @JoinColumn(name="school_id")
     // the name here should be name as "mappedBy" in School.java which is school
+    // Jackson Annotations are used here to prevent infinite recursion while adding data, read README.md for more dets
+    @JsonBackReference
     private School school;
     
     public Student() {

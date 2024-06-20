@@ -6,6 +6,14 @@
 
 - See School.java and Student.java to see OneToMany and ManyToOne Relationship definition as School has one to many relationship with Students i.e School has many Students
 
+### How to Avoid Infinite Recursion while inserting data after relationship mapping
+
+USINg Jackson Annotations
+
+- School is parent of Student, so we add `@JsonManagedReference` in School.java where List of Stidents is defined which causes infinite recursion between Student and School, because student also has School defined. <br>This annotation means that Parent is responsible for serializing the child and child cannot serialize parent.
+
+- Since Student is <underline>CHILD</underline> of School, we use `@JsonBackReference` annotation in Student.java where School is instantiated. This means that Student entity/object doesnt need to serialize its parent i.e School
+
 #### RelationShip Mapping
 
 ![mapping]("RelationShip Heirarchy Mapping.png")

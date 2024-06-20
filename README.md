@@ -2,7 +2,7 @@
 
 #### RelationShip Mapping
 
-![mapping]("RelationShip_Heirarchy_Mapping.png")
+![mapping](RelationShip_Heirarchy_Mapping.png)
 
 ### Defining JPA Relationships
 

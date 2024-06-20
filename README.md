@@ -4,6 +4,8 @@
 
 ![mapping](RelationShip_Heirarchy_Mapping.png)
 
+- Here, School is Parent of Student, and Student is Parent of StudentProfile while defining relationships
+
 ### Defining JPA Relationships
 
 - See Student.java and StudentProfile.java to see `@OneToOne` Reltionship definition i.e Each Student has a StudentProfile

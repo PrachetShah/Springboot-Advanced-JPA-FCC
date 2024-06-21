@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.apis.student.schoolFiles.School;
+
 
 @RestController
 @RequestMapping("api/students")
@@ -24,6 +26,38 @@ public class StudentController {
     @PostMapping
     public Student addStudent(@RequestBody Student student){
         return studentRepository.save(student);
+    }
+
+    // using DTO to hide sensitive information
+    @PostMapping(path = "using_dto")
+    public StudentResponseDto addStudentDto(@RequestBody StudentDto dto){
+        // now this will give error as our repo can only save student type, so we convert dto into student with less args
+        // return studentRepository.save(student);
+
+        var student = toStudent(dto);
+        // this way we have a new response which can be sent to user or a new representation of student
+        var studentSaved = studentRepository.save(student);
+        return toStudentResponseDto(studentSaved);
+    }
+
+    private StudentResponseDto toStudentResponseDto(Student student){
+        return new StudentResponseDto(student.getFirstName(), student.getLastName(), student.getEmail());
+    }
+
+    private Student toStudent(StudentDto dto){
+        var student = new Student();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+
+        // set school since dto has a school id
+        var school = new School();
+        school.setId(dto.schoolId());
+
+        // add school in student
+        student.setSchool(school);
+
+        return student;
     }
 
     @GetMapping

@@ -28,6 +28,7 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 
 - We want to hide sensitive information from outside world, hence we introduce a service or `mapper` which helps hide that information like password, email, phone number, etc. Using a mapper, we can have multiple representations of an entity
 - So, to demonstrate DTO, we create a StudentDto Record, which contains name, email, and schoolId. We can add it into persistence DB by posting req on the url passing DTO object instead of student object
+- See **Postman Collection** to undestand output of different APIs based on DTO or non-DTO. When running for **First time**, run `PostSchool/PostSchoolDto`, `PostStudent/PostSchoolDto`, and then run other commands like `Get, Delete, etc`
 
 ### Methods to Run the Code
 

@@ -1,6 +1,9 @@
 package com.example.apis.student.schoolFiles;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.xml.validation.SchemaFactoryLoader;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,5 +46,19 @@ public class SchoolController {
     @GetMapping
     public List<School> getSchools(){
         return schoolRepository.findAll();
+    }
+
+
+    // get all schoolsDto
+    private SchoolDto toSchoolDto(School school){
+        return new SchoolDto(school.getname());
+    }
+    @GetMapping(path = "using_dto")
+    public List<SchoolDto> getSchoolDto(){
+        // converting stream of School List into SchoolDto using a mapper function
+        return schoolRepository.findAll()
+        .stream()
+        .map(this::toSchoolDto)
+        .collect(Collectors.toList());
     }
 }

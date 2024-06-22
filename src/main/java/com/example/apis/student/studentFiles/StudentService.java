@@ -2,8 +2,11 @@ package com.example.apis.student.studentFiles;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.example.apis.student.schoolFiles.School;
 
+@Service
 public class StudentService {
     // dependency Injection
     private final StudentRepository studentRepository;

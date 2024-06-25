@@ -1,6 +1,7 @@
 package com.example.apis.student.studentFiles;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,9 @@ public class StudentService {
      * encapsulate them from public
     */
 
-    // Add students in repo
+    /* 
+        Add students in repo
+    */ 
     public Student addStud(Student student){
         return studentRepository.save(student);
     }
@@ -59,14 +62,27 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
-    // get student by id
-    public Student getStudentById(int id){
-        return studentRepository.findById(id).orElse(null);
+    // get all studentsResponse DTO
+    public List<StudentResponseDto> getStudentsDto(){
+        return studentRepository.findAll()
+        .stream()
+        .map(this::toStudentResponseDto)
+        .collect(Collectors.toList());
     }
 
-    // search for student by name
-    public List<Student> getByName(String name){
-        return studentRepository.findAllByFirstNameContaining(name);
+    // get studentRespDto by id
+    public StudentResponseDto getStudentById(int id){
+        return studentRepository.findById(id)
+        .map(this::toStudentResponseDto)
+        .orElse(null);
+    }
+
+    // search for student by name and output StudentResponseDto
+    public List<StudentResponseDto> getByName(String name){
+        return studentRepository.findAllByFirstNameContaining(name)
+        .stream()
+        .map(this::toStudentResponseDto)
+        .collect(Collectors.toList());
     }
 
     // delete based on id

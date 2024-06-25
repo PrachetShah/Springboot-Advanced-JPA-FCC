@@ -39,13 +39,15 @@ public class SchoolService {
 
     // get all schooldtos
     public List<SchoolDto> geDtos(){
-         // converting stream of School List into SchoolDto using a mapper function
+        // converting stream of School List into SchoolDto using a mapper function
         return schoolRepository.findAll()
         .stream()
         .map(this::toSchoolDto)
         .collect(Collectors.toList());
     }
-    public SchoolDto toSchoolDto(School school){
+
+    // internal mapper function
+    private SchoolDto toSchoolDto(School school){
         return new SchoolDto(school.getname());
     }
 }

@@ -38,13 +38,18 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    @GetMapping(path="using_dto")
+    public List<StudentResponseDto> getAllDto(){
+        return studentService.getStudentsDto();
+    }
+
     @GetMapping(path="{id}")
-    public Student getStudentbyId(@PathVariable int id){
+    public StudentResponseDto getStudentbyId(@PathVariable int id){
         return studentService.getStudentById(id);
     }
 
     @GetMapping(path="search/{student_name}")
-    public List<Student> getStudentbyName(@PathVariable("student_name") String student_name){
+    public List<StudentResponseDto> getStudentbyName(@PathVariable("student_name") String student_name){
         return studentService.getByName(student_name);
     }
 

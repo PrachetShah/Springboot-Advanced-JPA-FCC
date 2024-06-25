@@ -62,6 +62,7 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 6. Use `@Repository` in repository file
 7. in Config file, use `@Configuration` on class and `@Bean` for method to add initial values in DB when running command
 8. If we use `spring.jpa.hibernate.ddl-auto=create-drop`, then there is need for Config, else use, `...=update`, to dont delete the DB Details when application reloads
+9. To create a custom banner in springboot while booting, create banner.txt file in main/resources
 
 ### To Upload Package on GitHub:
 

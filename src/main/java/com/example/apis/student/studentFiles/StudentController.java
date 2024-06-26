@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("api/students")
@@ -29,7 +31,7 @@ public class StudentController {
 
     // using DTO to hide sensitive information
     @PostMapping(path = "using_dto")
-    public StudentResponseDto addStudentDto(@RequestBody StudentDto dto){
+    public StudentResponseDto addStudentDto(@Valid @RequestBody StudentDto dto){
         return studentService.addStudDto(dto);
     }
 

@@ -30,11 +30,25 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 - So, to demonstrate DTO, we create a StudentDto Record, which contains name, email, and schoolId. We can add it into persistence DB by posting req on the url passing DTO object instead of student object
 - See **Postman Collection** to undestand output of different APIs based on DTO or non-DTO. When running for **First time**, run `PostSchool/PostSchoolDto`, `PostStudent/PostSchoolDto`, and then run other commands like `Get, Delete, etc`
 
+### SpringBoot Data Validation using spring-boot-starter-validation
+
+- Check `StudenDto.java` for use of validation annotations.<br>
+
+- We apply validation to the bottommost layer where we ineract with data, hence validation is applied at DTO level, to validate data before posting.
+- These validations are valid with everything, even if you work with records, or simple classes
+- We need to add some annotations on field of objects to apply validation on them like `@NotEmpty`
+- To tell Spring which object is to be validated, use `@Valid` annotation in their defined part i.e, for `StudentDto` object, use `@Valid` annotation in `POST` req in `StudentController.java`
+
 ### Layers in Application are:
 
 ![layers](Layers.png)
 
 ### Methods to Run the Code
+
+#### To Run on Postman API
+
+- First POST School using DTO or normal
+- Second, POST Student using DTO or normal
 
 #### 1. To run the application:
 

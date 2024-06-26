@@ -1,9 +1,14 @@
 package com.example.apis.student.studentFiles;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,6 +35,9 @@ public class StudentController {
     }
 
     // using DTO to hide sensitive information
+    // Returns MethodArgumentNotValidException if validation fails, @Valid is used to apply validation checks mentioned in DTO file
+    // we create a seperate exception handler to handle this exceptions by returning ResponseEntity instead of error in response when
+    // validation checks fail
     @PostMapping(path = "using_dto")
     public StudentResponseDto addStudentDto(@Valid @RequestBody StudentDto dto){
         return studentService.addStudDto(dto);
@@ -60,5 +68,15 @@ public class StudentController {
     @ResponseStatus(HttpStatus.OK)
     public String deleteStudent(@PathVariable int id){
         return studentService.deleteStudent(id);
+    }
+
+    // handling MethodArgumentNotValidException raised when Validation checks fail
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException exp){
+        var errors = new HashMap<String, String>();
+        exp.getBindingResult().getAllErrors().forEach(error -> {
+            var fieldName = ((FieldError)error).getField();
+            var errorMsg= error.getDefaultMessage();
+        });
     }
 }

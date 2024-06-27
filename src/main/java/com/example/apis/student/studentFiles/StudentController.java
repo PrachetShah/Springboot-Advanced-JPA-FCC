@@ -77,6 +77,8 @@ public class StudentController {
         exp.getBindingResult().getAllErrors().forEach(error -> {
             var fieldName = ((FieldError)error).getField();
             var errorMsg= error.getDefaultMessage();
+            errors.put(fieldName, errorMsg);
         });
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 }

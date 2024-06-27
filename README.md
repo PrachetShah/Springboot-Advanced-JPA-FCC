@@ -38,7 +38,17 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 - These validations are valid with everything, even if you work with records, or simple classes
 - We need to add some annotations on field of objects to apply validation on them like `@NotEmpty`
 - To tell Spring which object is to be validated, use `@Valid` annotation in their defined part i.e, for `StudentDto` object, use `@Valid` annotation in `POST` req in `StudentController.java`
-- We also define a `MethodArgumentNotValidException` Handler in Controller using `@ExceptionHandler` to handle the Exception class by passing in `MethodArgumentNotValidException.class` to return a custom `ResponseEntity` instead of `Error` Message in Response when validation checks fail
+- We also define a `MethodArgumentNotValidException` Handler in Controller using `@ExceptionHandler` to handle the Exception class by passing in `MethodArgumentNotValidException.class` to return a custom `ResponseEntity` instead of `Error` Message in Response when validation checks fail to undesrtand what the error is in response instead of checing console
+- Creating Custom Exception Handler lets us give proper custom msg, for eg for StudentPost, with not specified firstName, and improper email format we get:
+
+```
+{
+    "firstName": "must not be empty",
+    "email": "must be a well-formed email address"
+}
+```
+
+- To write custom message in output, we can directly define a `message` parameter in annotations, for eg: `@NotEmpty(message="")`
 
 ### Layers in Application are:
 

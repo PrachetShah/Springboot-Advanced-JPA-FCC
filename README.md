@@ -1,6 +1,6 @@
 ## Advanced Springboot with relationships in JPA using Java-Maven for FCC Course of Springboot
 
-#### RelationShip Mapping
+#### Relationship Mapping
 
 ![mapping](RelationShip_Heirarchy_Mapping.png)
 
@@ -49,6 +49,22 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 ```
 
 - To write custom message in output, we can directly define a `message` parameter in annotations, for eg: `@NotEmpty(message="")`
+
+### Types of Testing (done using spring-test)
+
+- Unit Testing
+- Integration Testing
+- End-to-End Testing
+
+### Spring-Test Introduction
+
+- A springboot application is SpringApplicationContext
+- Springboot provides `@SpringBootTest` annotation when you need Springboot features during test
+  - for JUnit 4 -> `@RunWith(SpringRunner.class)` to your test
+  - For JUnit 5 -> No need to add the equivalent `@ExtendWith(SpringExtension)`
+- SpringBoot's auto-configuration system works well for applications but sometimes can be too much for tests
+- It often helps to load only the parts of configuration that are required to test a "slice" of your application
+- Each slice restricts component scan to appropriate classes and loads a very restricted set of auto-configuration class
 
 ### Layers in Application are:
 

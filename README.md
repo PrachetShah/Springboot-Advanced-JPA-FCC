@@ -78,6 +78,7 @@ Some Common Annotations:
 - `@BeforeEach` and `@BeforeAll` are the JUnit 5 equivalents of `@Before` and `@BeforeClass` present in JUnit 4. These annotations were renamed with clearer names to avoid confusion.
 - Methods annotated with the `@BeforeEach` OR `@Before` annotation are run before each test.
 - Methods annotated with the `@AfterEach` OR `@After` annotation are run after each test.
+- You can initialise data in BeforeEach and delete it in AfterEach as a good practise
 
 ### Layers in Application are:
 

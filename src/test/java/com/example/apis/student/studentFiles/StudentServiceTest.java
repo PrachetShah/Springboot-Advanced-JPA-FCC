@@ -26,8 +26,6 @@ public class StudentServiceTest {
         System.out.println("Inside the after each set method");
     }
 
-
-
     @Test
     public void testMethod1() {
         System.out.println("My first test method");

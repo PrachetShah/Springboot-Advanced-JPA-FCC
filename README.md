@@ -65,6 +65,19 @@ Now using this, we need to provide a lot of overhead and makes our Student objec
 - SpringBoot's auto-configuration system works well for applications but sometimes can be too much for tests
 - It often helps to load only the parts of configuration that are required to test a "slice" of your application
 - Each slice restricts component scan to appropriate classes and loads a very restricted set of auto-configuration class
+- Keep same name as packages while testing (it can be created even without packages but it is ideal to create same package heirarchy)
+
+### How to create test files
+
+- Go to file you want to create test file of and click `Source Action -> Generate Tests` to create test files.
+- In IDE like IntelliJ and Eclipse, you can use other shortcuts to create as well
+- In test, the methods should always be `public` and by adding `@Test` annotation over the method
+
+Some Common Annotations:
+
+- `@BeforeEach` and `@BeforeAll` are the JUnit 5 equivalents of `@Before` and `@BeforeClass` present in JUnit 4. These annotations were renamed with clearer names to avoid confusion.
+- Methods annotated with the `@BeforeEach` OR `@Before` annotation are run before each test.
+- Methods annotated with the `@AfterEach` OR `@After` annotation are run after each test.
 
 ### Layers in Application are:
 

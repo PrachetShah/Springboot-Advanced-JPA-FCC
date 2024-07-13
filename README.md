@@ -81,6 +81,10 @@ Some Common Annotations:
 - You can initialise data in BeforeEach and delete it in AfterEach as a good practise
 - `@BeforeAll` and `@AfterAll` are run before all methods of class are executed and and after all methods complete executing
 
+Perform Tests:
+
+- To perform tests, we can use `assert` Methods like `assertEquals, assertNotNull, and many more` to check for assertions in a `Given`, `When`, and `Assert` format like in `StudentMapperTest.java`
+
 ### Layers in Application are:
 
 ![layers](Layers.png)

@@ -79,6 +79,7 @@ Some Common Annotations:
 - Methods annotated with the `@BeforeEach` OR `@Before` annotation are run before each test.
 - Methods annotated with the `@AfterEach` OR `@After` annotation are run after each test.
 - You can initialise data in BeforeEach and delete it in AfterEach as a good practise
+- `@BeforeAll` and `@AfterAll` are run before all methods of class are executed and and after all methods complete executing
 
 ### Layers in Application are:
 

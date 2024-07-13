@@ -11,8 +11,11 @@ import com.example.apis.student.schoolFiles.School;
 public class StudentService {
     // dependency Injection
     private final StudentRepository studentRepository;
-    public StudentService(StudentRepository studentRepository){
+    private final StudentMapper studentMapper;
+
+    public StudentService(StudentRepository studentRepository, StudentMapper studentMapper){
         this.studentRepository = studentRepository;
+        this.studentMapper = studentMapper;
     }
 
     /*
@@ -30,31 +33,10 @@ public class StudentService {
 
     // add student dto
     public StudentResponseDto addStudDto(StudentDto dto){
-        var student = toStudent(dto);
+        var student = studentMapper.toStudent(dto);
         // this way we have a new response which can be sent to user or a new representation of student
         var studentSaved = studentRepository.save(student);
-        return toStudentResponseDto(studentSaved);
-    }
-
-    // change Student type to StudenDto type, internal private func
-    private StudentResponseDto toStudentResponseDto(Student student){
-        return new StudentResponseDto(student.getFirstName(), student.getLastName(), student.getEmail());
-    }
-
-    // change StudentDto type to Student type, internal private func
-    private Student toStudent(StudentDto dto){
-        var student = new Student();
-        student.setFirstName(dto.firstName());
-        student.setLastName(dto.lastName());
-        student.setEmail(dto.email());
-
-        // set school since dto has a school id
-        var school = new School();
-        school.setId(dto.schoolId());
-
-        // add school in student
-        student.setSchool(school);
-        return student;
+        return studentMapper.toStudentResponseDto(studentSaved);
     }
 
     // get all students
@@ -66,14 +48,14 @@ public class StudentService {
     public List<StudentResponseDto> getStudentsDto(){
         return studentRepository.findAll()
         .stream()
-        .map(this::toStudentResponseDto)
+        .map(studentMapper::toStudentResponseDto)
         .collect(Collectors.toList());
     }
 
     // get studentRespDto by id
     public StudentResponseDto getStudentById(int id){
         return studentRepository.findById(id)
-        .map(this::toStudentResponseDto)
+        .map(studentMapper::toStudentResponseDto)
         .orElse(null);
     }
 
@@ -81,7 +63,7 @@ public class StudentService {
     public List<StudentResponseDto> getByName(String name){
         return studentRepository.findAllByFirstNameContaining(name)
         .stream()
-        .map(this::toStudentResponseDto)
+        .map(studentMapper::toStudentResponseDto)
         .collect(Collectors.toList());
     }
 

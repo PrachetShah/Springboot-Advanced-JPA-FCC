@@ -1,5 +1,8 @@
 package com.example.apis.student.studentFiles;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,47 +10,40 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class StudentServiceTest {
+    private StudentMapper mapper;
     
-    // runs before every method once
-    @BeforeAll
-    static void beforeClass() {
-        System.out.println("Inside the before All set method\n");
-    }
-
-    @AfterAll
-    static void afterClass() {
-        System.out.println("\nInside the after All set method");
-    }
-
-
-    /*
-     * @BeforeEach and @BeforeAll are the JUnit 5 equivalents of @Before and @BeforeClass present in JUnit 4. 
-     * These annotations were renamed with clearer names to avoid confusion.
-     * 
-     * Methods annotated with the @Before annotation are run before each test.
-    */
     @BeforeEach
     void setUp() {
-        System.out.println("Inside the before each set method");
+        mapper = new StudentMapper();
     }
 
-    /*
-     * It works after each execution of tests
-     * Methods annotated with the @After annotation are run after each test.
-    */
-    @AfterEach
-    void tearDown() {
-        System.out.println("Inside the after each set method");
-    }
 
 
     @Test
-    public void testMethod1() {
-        System.out.println("My first test method");
+    public void shouldMapStudentDtoToStudent(){
+        StudentDto dto = new StudentDto("Prachet","Does", "john@emaik.com", 1);
+        Student student = mapper.toStudent(dto);
+
+        // asserting if it is correct
+        assertEquals(dto.firstName(), student.getFirstName());
+        assertEquals(dto.lastName(), student.getLastName());
+        assertEquals(dto.email(), student.getEmail());
+        assertNotNull(student.getSchool());
+        assertEquals(dto.schoolId(), student.getSchool().getId());
     }
 
     @Test
-    public void testMethod2() {
-        System.out.println("My second test method");
+    public void shouldMapStudentToStudentResponseDto(){
+        // given
+        Student student = new Student("Prachet", "Shah", "prachet@gmail.com", 21);
+
+        // when we map given to 
+        StudentResponseDto dto = mapper.toStudentResponseDto(student);
+
+        // then we assert for these results, if it is correct
+        assertEquals(dto.firstName(), student.getFirstName());
+        assertEquals(dto.lastName(), student.getLastName());
+        assertEquals(dto.email(), student.getEmail());
+        assertNotNull(student.getAge());
     }
 }

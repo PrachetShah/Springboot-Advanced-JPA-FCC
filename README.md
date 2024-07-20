@@ -124,6 +124,11 @@ Perform Tests:
 8. If we use `spring.jpa.hibernate.ddl-auto=create-drop`, then there is need for Config, else use, `...=update`, to dont delete the DB Details when application reloads
 9. To create a custom banner in springboot while booting, create banner.txt file in main/resources
 
+### Some Concepts
+
+1. The central artifacts in Spring's Java configuration support are `@Configuration` -annotated classes and `@Bean` -annotated methods. The `@Bean` annotation is used to indicate that a method instantiates, configures, and initializes a new object to be managed by the Spring IoC container.
+2. `Spring's Inversion of Control (IoC)` principle flips the script. With IoC, you delegate the responsibility of object creation and dependency management to the Spring container. Instead of creating objects explicitly, you define their dependencies through configuration files or annotations.
+
 ### To Upload Package on GitHub:
 
 1. Change the REPOSITORY on `/{user}/.m2/settings.xml` and add `OWNER` and `GITHUB_TOKEN`

@@ -13,6 +13,10 @@ public class StudentMapper {
 
     // change StudentDto type to Student type, internal private func
     public Student toStudent(StudentDto dto){
+        // check for null values
+        if(dto == null){
+            throw new NullPointerException("DTO value cannot be null, pass a valid format");
+        }
         var student = new Student();
         student.setFirstName(dto.firstName());
         student.setLastName(dto.lastName());

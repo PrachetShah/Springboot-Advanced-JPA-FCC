@@ -3,6 +3,7 @@ package com.example.apis.student.studentFiles;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -25,6 +26,7 @@ import jakarta.validation.Valid;
 public class StudentController {
     // dependency injection
     private final StudentService studentService;
+    @Autowired
     public StudentController(StudentService studentService){
         this.studentService = studentService;
     }

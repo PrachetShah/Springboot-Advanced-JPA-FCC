@@ -80,6 +80,7 @@ Some Common Annotations:
 - Methods annotated with the `@AfterEach` OR `@After` annotation are run after each test.
 - You can initialise data in BeforeEach and delete it in AfterEach as a good practise
 - `@BeforeAll` and `@AfterAll` are run before all methods of class are executed and and after all methods complete executing
+- If you're certain that the tests don't make any changes to those conditions, you can use `beforeAll` (which will run once). If the tests do make changes to those conditions, then you would need to use `beforeEach`, which will run before every test, so it can reset the conditions for the next one.
 
 Perform Tests:
 

@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.example.apis.student.schoolFiles.School;
-
 @Service
 public class StudentService {
     // dependency Injection

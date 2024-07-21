@@ -86,6 +86,15 @@ Perform Tests:
 
 - To perform tests, we can use `assert` Methods like `assertEquals, assertNotNull, and many more` to check for assertions in a `Given`, `When`, and `Assert` format like in `StudentMapperTest.java`
 
+### Test Isolation with Mocks
+
+- Its when we want to run tests based on isolation from its dependencies, like keeping `Repository` in isolation for `Service` tests.
+- So we `MOCK` objects to run the tests. It involves creating fake objects that stand in for real objects within the system. These fake objects, known as mock objects, can be used to test how different parts of the system interact with each other in a controlled environment.
+- We perform mocking in Springboot with `mockito` to perform mocking, which is like python's `unittest.mock`
+- We create Mocks using the `@Mock` annotation from `org.mockito` to specify which objects to create mocks of.
+- To inject mocks as dependency for a object, we use `@InjectMocks` annotation before constructor. InjectMocks will find any dependency having the `@Mock` annotation that matched the requirement. for eg, studentService will find methods with studentRepo and studentMapper
+- after initialising mocks, we need to tell mockito framework to start the mocks in current class using `MockitoAnnotations.openMocks(this)` in `setUp` method in BeforeEach. `this` means that to open mocks in current class
+
 ### Layers in Application are:
 
 ![layers](Layers.png)
